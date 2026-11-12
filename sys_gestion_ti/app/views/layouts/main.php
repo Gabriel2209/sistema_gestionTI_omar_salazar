@@ -14,7 +14,7 @@ $hora = (int) date('G');
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link href="<?= asset('css/app.css') ?>" rel="stylesheet">
+  <link href="<?= asset('css/app.css') . '?v=' . filemtime(__DIR__ . '/../../../assets/css/app.css') ?>" rel="stylesheet">
   <script>try { if (localStorage.getItem('td_theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); if (localStorage.getItem('td_collapsed') === '1') document.documentElement.classList.add('sb-collapsed'); } catch (e) { }</script>
   <link rel="manifest" href="<?= BASE_URL ?>/manifest.json">
   <meta name="theme-color" content="#0b1437">
