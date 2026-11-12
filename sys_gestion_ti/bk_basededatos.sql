@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `actividad` (
   `color` varchar(9) NOT NULL DEFAULT '#4f46e5',
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.actividad: ~13 rows (aproximadamente)
 DELETE FROM `actividad`;
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `activos` (
   UNIQUE KEY `codigo` (`codigo`),
   KEY `cliente_id` (`cliente_id`),
   CONSTRAINT `activos_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.activos: ~48 rows (aproximadamente)
 DELETE FROM `activos`;
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `icono` varchar(40) NOT NULL DEFAULT 'bi-tag',
   `color` varchar(9) NOT NULL DEFAULT '#4f46e5',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.categorias: ~8 rows (aproximadamente)
 DELETE FROM `categorias`;
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `estado` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.clientes: ~8 rows (aproximadamente)
 DELETE FROM `clientes`;
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `configuracion` (
   `clave` varchar(60) NOT NULL,
   `valor` mediumtext,
   PRIMARY KEY (`clave`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.configuracion: ~5 rows (aproximadamente)
 DELETE FROM `configuracion`;
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   UNIQUE KEY `codigo` (`codigo`),
   KEY `cliente_id` (`cliente_id`),
   CONSTRAINT `contratos_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.contratos: ~8 rows (aproximadamente)
 DELETE FROM `contratos`;
@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `crm_actividades` (
   KEY `idx_act_cli` (`cliente_id`),
   KEY `idx_act_lead` (`lead_id`),
   KEY `idx_act_op` (`oportunidad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.crm_actividades: ~15 rows (aproximadamente)
 DELETE FROM `crm_actividades`;
@@ -272,7 +272,7 @@ CREATE TABLE IF NOT EXISTS `crm_contactos` (
   PRIMARY KEY (`id`),
   KEY `idx_cc_cliente` (`cliente_id`),
   CONSTRAINT `crm_contactos_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.crm_contactos: ~16 rows (aproximadamente)
 DELETE FROM `crm_contactos`;
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `crm_cotizaciones` (
   KEY `idx_cot_estado` (`estado`),
   KEY `cliente_id` (`cliente_id`),
   CONSTRAINT `crm_cotizaciones_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.crm_cotizaciones: ~5 rows (aproximadamente)
 DELETE FROM `crm_cotizaciones`;
@@ -340,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `crm_cotizacion_items` (
   PRIMARY KEY (`id`),
   KEY `cotizacion_id` (`cotizacion_id`),
   CONSTRAINT `crm_cotizacion_items_ibfk_1` FOREIGN KEY (`cotizacion_id`) REFERENCES `crm_cotizaciones` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.crm_cotizacion_items: ~11 rows (aproximadamente)
 DELETE FROM `crm_cotizacion_items`;
@@ -366,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `crm_etapas` (
   `color` varchar(9) NOT NULL DEFAULT '#4f46e5',
   `tipo` enum('abierta','ganada','perdida') NOT NULL DEFAULT 'abierta',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.crm_etapas: ~6 rows (aproximadamente)
 DELETE FROM `crm_etapas`;
@@ -402,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `crm_leads` (
   UNIQUE KEY `codigo` (`codigo`),
   KEY `idx_lead_estado` (`estado`),
   KEY `idx_lead_resp` (`responsable_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.crm_leads: ~8 rows (aproximadamente)
 DELETE FROM `crm_leads`;
@@ -446,7 +446,7 @@ CREATE TABLE IF NOT EXISTS `crm_oportunidades` (
   KEY `cliente_id` (`cliente_id`),
   CONSTRAINT `crm_oportunidades_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`),
   CONSTRAINT `crm_oportunidades_ibfk_2` FOREIGN KEY (`etapa_id`) REFERENCES `crm_etapas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.crm_oportunidades: ~14 rows (aproximadamente)
 DELETE FROM `crm_oportunidades`;
@@ -497,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `fac_comprobantes` (
   KEY `idx_fac_cli` (`cliente_id`),
   KEY `idx_fac_est` (`estado`,`fecha_vencimiento`),
   CONSTRAINT `fac_comprobantes_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.fac_comprobantes: ~31 rows (aproximadamente)
 DELETE FROM `fac_comprobantes`;
@@ -544,7 +544,7 @@ CREATE TABLE IF NOT EXISTS `fac_items` (
   PRIMARY KEY (`id`),
   KEY `comprobante_id` (`comprobante_id`),
   CONSTRAINT `fac_items_ibfk_1` FOREIGN KEY (`comprobante_id`) REFERENCES `fac_comprobantes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.fac_items: ~38 rows (aproximadamente)
 DELETE FROM `fac_items`;
@@ -603,7 +603,7 @@ CREATE TABLE IF NOT EXISTS `fac_pagos` (
   KEY `idx_pag_fecha` (`fecha`),
   KEY `comprobante_id` (`comprobante_id`),
   CONSTRAINT `fac_pagos_ibfk_1` FOREIGN KEY (`comprobante_id`) REFERENCES `fac_comprobantes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.fac_pagos: ~22 rows (aproximadamente)
 DELETE FROM `fac_pagos`;
@@ -645,7 +645,7 @@ CREATE TABLE IF NOT EXISTS `ia_consultas` (
   `ultimo_uso` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`,`favorito`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.ia_consultas: ~0 rows (aproximadamente)
 DELETE FROM `ia_consultas`;
@@ -662,7 +662,7 @@ CREATE TABLE IF NOT EXISTS `kb_articulos` (
   `autor_id` int unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.kb_articulos: ~5 rows (aproximadamente)
 DELETE FROM `kb_articulos`;
@@ -688,7 +688,7 @@ CREATE TABLE IF NOT EXISTS `notif_envios` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idx_nv_fecha` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.notif_envios: ~0 rows (aproximadamente)
 DELETE FROM `notif_envios`;
@@ -705,7 +705,7 @@ CREATE TABLE IF NOT EXISTS `ordenes_repuestos` (
   KEY `repuesto_id` (`repuesto_id`),
   CONSTRAINT `ordenes_repuestos_ibfk_1` FOREIGN KEY (`orden_id`) REFERENCES `ordenes_servicio` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ordenes_repuestos_ibfk_2` FOREIGN KEY (`repuesto_id`) REFERENCES `repuestos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.ordenes_repuestos: ~5 rows (aproximadamente)
 DELETE FROM `ordenes_repuestos`;
@@ -751,7 +751,7 @@ CREATE TABLE IF NOT EXISTS `ordenes_servicio` (
   CONSTRAINT `ordenes_servicio_ibfk_2` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`) ON DELETE SET NULL,
   CONSTRAINT `ordenes_servicio_ibfk_3` FOREIGN KEY (`activo_id`) REFERENCES `activos` (`id`) ON DELETE SET NULL,
   CONSTRAINT `ordenes_servicio_ibfk_4` FOREIGN KEY (`tecnico_id`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.ordenes_servicio: ~12 rows (aproximadamente)
 DELETE FROM `ordenes_servicio`;
@@ -781,7 +781,7 @@ CREATE TABLE IF NOT EXISTS `repuestos` (
   `ubicacion` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `codigo` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.repuestos: ~10 rows (aproximadamente)
 DELETE FROM `repuestos`;
@@ -804,7 +804,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `descripcion` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.roles: ~4 rows (aproximadamente)
 DELETE FROM `roles`;
@@ -846,7 +846,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   CONSTRAINT `tickets_ibfk_2` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`),
   CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`tecnico_id`) REFERENCES `usuarios` (`id`) ON DELETE SET NULL,
   CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`activo_id`) REFERENCES `activos` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.tickets: ~230 rows (aproximadamente)
 DELETE FROM `tickets`;
@@ -1093,7 +1093,7 @@ CREATE TABLE IF NOT EXISTS `ticket_comentarios` (
   PRIMARY KEY (`id`),
   KEY `ticket_id` (`ticket_id`),
   CONSTRAINT `ticket_comentarios_ibfk_1` FOREIGN KEY (`ticket_id`) REFERENCES `tickets` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.ticket_comentarios: ~0 rows (aproximadamente)
 DELETE FROM `ticket_comentarios`;
@@ -1119,7 +1119,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   UNIQUE KEY `email` (`email`),
   KEY `rol_id` (`rol_id`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.usuarios: ~7 rows (aproximadamente)
 DELETE FROM `usuarios`;
@@ -1146,7 +1146,7 @@ CREATE TABLE IF NOT EXISTS `visitas` (
   PRIMARY KEY (`id`),
   KEY `cliente_id` (`cliente_id`),
   CONSTRAINT `visitas_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla sys_gestion_ti.visitas: ~9 rows (aproximadamente)
 DELETE FROM `visitas`;
@@ -1164,31 +1164,31 @@ INSERT INTO `visitas` (`id`, `ticket_id`, `cliente_id`, `tecnico_id`, `tipo`, `f
 -- Volcando estructura para vista sys_gestion_ti.v_ia_actividades_crm
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_actividades_crm` (
-	`tipo` ENUM('llamada','reunion','correo','tarea','visita','nota') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`asunto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`tipo` ENUM('llamada','reunion','correo','tarea','visita','nota') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`asunto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha` DATETIME NULL,
 	`realizada` TINYINT(1) NOT NULL,
 	`vencida` INT NOT NULL,
-	`cliente` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`lead_nombre` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`vendedor` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`cliente` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`lead_nombre` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`vendedor` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_activos
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_activos` (
 	`equipo_id` INT UNSIGNED NULL,
-	`codigo` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tipo` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`marca` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`modelo` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`serie` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`ubicacion` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tipo` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`marca` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`modelo` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`serie` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`ubicacion` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha_compra` DATE NULL,
 	`garantia_hasta` DATE NULL,
 	`garantia_vigente` INT NULL,
-	`estado` ENUM('operativo','en_reparacion','baja') NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`estado` ENUM('operativo','en_reparacion','baja') NULL COLLATE 'utf8mb4_unicode_ci',
 	`num_tickets` BIGINT NULL
 ) ENGINE=MyISAM;
 
@@ -1196,28 +1196,28 @@ CREATE TABLE `v_ia_activos` (
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_clientes` (
 	`cliente_id` INT UNSIGNED NULL,
-	`cliente` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`ruc` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`rubro` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`contacto` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`telefono` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`email` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`cliente` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`ruc` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`rubro` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`contacto` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`telefono` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`email` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`activo` TINYINT(1) NULL,
 	`registrado` TIMESTAMP NULL,
 	`num_tickets` BIGINT NULL,
 	`tickets_activos` BIGINT NULL,
 	`num_equipos` BIGINT NULL,
-	`plan` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`plan` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`monto_mensual` DECIMAL(32,2) NULL
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_comprobantes
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_comprobantes` (
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tipo` ENUM('factura','boleta','recibo') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`concepto` ENUM('mensualidad','servicio','equipos','otro') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tipo` ENUM('factura','boleta','recibo') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`concepto` ENUM('mensualidad','servicio','equipos','otro') NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha` DATE NOT NULL,
 	`mes` VARCHAR(1) NULL COLLATE 'utf8mb4_general_ci',
 	`vencimiento` DATE NOT NULL,
@@ -1234,10 +1234,10 @@ CREATE TABLE `v_ia_comprobantes` (
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_conocimiento` (
 	`articulo_id` INT UNSIGNED NOT NULL,
-	`titulo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`categoria` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`titulo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`categoria` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`vistas_lectura` INT NOT NULL,
-	`autor` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`autor` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha` TIMESTAMP NULL
 ) ENGINE=MyISAM;
 
@@ -1245,60 +1245,60 @@ CREATE TABLE `v_ia_conocimiento` (
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_contratos` (
 	`contrato_id` INT UNSIGNED NOT NULL,
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`plan` ENUM('Básico','Business','Premium') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`plan` ENUM('Básico','Business','Premium') NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`sla_respuesta_horas` SMALLINT NOT NULL,
 	`sla_resolucion_horas` SMALLINT NOT NULL,
 	`fecha_inicio` DATE NOT NULL,
 	`fecha_fin` DATE NOT NULL,
 	`dias_para_vencer` INT NULL,
 	`monto_mensual` DECIMAL(10,2) NOT NULL,
-	`estado` ENUM('vigente','por_vencer','vencido') NOT NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`estado` ENUM('vigente','por_vencer','vencido') NOT NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_cotizaciones
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_cotizaciones` (
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha` DATE NOT NULL,
 	`mes` VARCHAR(1) NULL COLLATE 'utf8mb4_general_ci',
 	`valida_hasta` DATE NOT NULL,
-	`estado` ENUM('borrador','enviada','aprobada','rechazada','vencida') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`estado` ENUM('borrador','enviada','aprobada','rechazada','vencida') NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`subtotal` DECIMAL(12,2) NOT NULL,
 	`descuento` DECIMAL(12,2) NOT NULL,
 	`igv` DECIMAL(12,2) NOT NULL,
 	`total` DECIMAL(12,2) NOT NULL,
-	`oportunidad` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`oportunidad` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_leads
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_leads` (
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`empresa` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`contacto` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cargo` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`rubro` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`origen` ENUM('web','referido','llamada','evento','redes','correo','otro') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`estado` ENUM('nuevo','contactado','calificado','descartado','convertido') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`empresa` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`contacto` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`cargo` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`rubro` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`origen` ENUM('web','referido','llamada','evento','redes','correo','otro') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`estado` ENUM('nuevo','contactado','calificado','descartado','convertido') NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`score` TINYINT UNSIGNED NOT NULL,
 	`fecha` DATETIME NOT NULL,
 	`mes` VARCHAR(1) NULL COLLATE 'utf8mb4_general_ci',
-	`vendedor` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`motivo_descarte` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`vendedor` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`motivo_descarte` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_oportunidades
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_oportunidades` (
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`titulo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`etapa` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`estado` ENUM('abierta','ganada','perdida') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tipo` ENUM('contrato','renovacion','proyecto','equipos','servicio') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`titulo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`etapa` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`estado` ENUM('abierta','ganada','perdida') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tipo` ENUM('contrato','renovacion','proyecto','equipos','servicio') NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`valor` DECIMAL(12,2) NOT NULL,
 	`probabilidad` TINYINT UNSIGNED NOT NULL,
 	`valor_ponderado` DECIMAL(16,2) NULL,
@@ -1306,20 +1306,20 @@ CREATE TABLE `v_ia_oportunidades` (
 	`cierre_real` DATE NULL,
 	`mes_cierre` VARCHAR(1) NULL COLLATE 'utf8mb4_general_ci',
 	`fecha` DATETIME NOT NULL,
-	`vendedor` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`motivo_perdida` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`vendedor` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`motivo_perdida` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_ordenes
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_ordenes` (
 	`orden_id` INT UNSIGNED NOT NULL,
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`ticket` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tipo` ENUM('correctiva','preventiva','instalacion','diagnostico') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`estado` ENUM('pendiente','en_curso','completada','cancelada') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`ticket` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`tipo` ENUM('correctiva','preventiva','instalacion','diagnostico') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`estado` ENUM('pendiente','en_curso','completada','cancelada') NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`horas` DECIMAL(5,2) NOT NULL,
 	`tarifa_hora` DECIMAL(8,2) NOT NULL,
 	`mano_obra` DECIMAL(12,2) NOT NULL,
@@ -1337,33 +1337,33 @@ CREATE TABLE `v_ia_pagos` (
 	`fecha` DATE NOT NULL,
 	`mes` VARCHAR(1) NULL COLLATE 'utf8mb4_general_ci',
 	`monto` DECIMAL(12,2) NOT NULL,
-	`metodo` ENUM('efectivo','transferencia','yape','plin','tarjeta','deposito','cheque') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`comprobante` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`metodo` ENUM('efectivo','transferencia','yape','plin','tarjeta','deposito','cheque') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`comprobante` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_repuestos
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_repuestos` (
 	`repuesto_id` INT UNSIGNED NOT NULL,
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`repuesto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`categoria` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`repuesto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`categoria` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`stock` INT NOT NULL,
 	`stock_minimo` INT NOT NULL,
 	`stock_bajo` INT NOT NULL,
 	`precio` DECIMAL(10,2) NOT NULL,
 	`valor_stock` DECIMAL(20,2) NOT NULL,
-	`ubicacion` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`ubicacion` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_tecnicos
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_tecnicos` (
 	`usuario_id` INT UNSIGNED NULL,
-	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`rol` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cargo` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`rol` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`cargo` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`activo` TINYINT(1) NULL,
 	`ultimo_acceso` DATETIME NULL,
 	`tickets_asignados` BIGINT NULL,
@@ -1377,19 +1377,19 @@ CREATE TABLE `v_ia_tecnicos` (
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_tickets` (
 	`ticket_id` INT UNSIGNED NOT NULL,
-	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codigo` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha` DATETIME NOT NULL,
 	`dia` DATE NULL,
 	`mes` VARCHAR(1) NULL COLLATE 'utf8mb4_general_ci',
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`categoria` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`asunto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`prioridad` ENUM('baja','media','alta','critica') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`estado` ENUM('abierto','en_proceso','pendiente','resuelto','cerrado') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`categoria` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`asunto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`prioridad` ENUM('baja','media','alta','critica') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`estado` ENUM('abierto','en_proceso','pendiente','resuelto','cerrado') NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`activo` INT NOT NULL,
-	`canal` ENUM('web','correo','telefono','whatsapp','presencial') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`equipo` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`canal` ENUM('web','correo','telefono','whatsapp','presencial') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`equipo` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha_limite` DATETIME NULL,
 	`resuelto_at` DATETIME NULL,
 	`horas_resolucion` DECIMAL(22,1) NULL,
@@ -1399,16 +1399,16 @@ CREATE TABLE `v_ia_tickets` (
 -- Volcando estructura para vista sys_gestion_ti.v_ia_uso_repuestos
 -- Creando tabla temporal para superar errores de dependencia de VIEW
 CREATE TABLE `v_ia_uso_repuestos` (
-	`orden` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`orden` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	`fecha` TIMESTAMP NULL,
 	`dia` DATE NULL,
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`repuesto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`categoria` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`repuesto` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`categoria` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
 	`cantidad` INT NOT NULL,
 	`precio_unit` DECIMAL(10,2) NOT NULL,
 	`importe` DECIMAL(20,2) NOT NULL,
-	`estado_orden` ENUM('pendiente','en_curso','completada','cancelada') NOT NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`estado_orden` ENUM('pendiente','en_curso','completada','cancelada') NOT NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Volcando estructura para vista sys_gestion_ti.v_ia_visitas
@@ -1417,12 +1417,12 @@ CREATE TABLE `v_ia_visitas` (
 	`visita_id` INT UNSIGNED NOT NULL,
 	`fecha_programada` DATETIME NOT NULL,
 	`dia` DATE NULL,
-	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`ticket` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`tipo` ENUM('correctiva','preventiva','instalacion','emergencia') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`estado` ENUM('programada','en_curso','completada','cancelada') NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`notas` VARCHAR(1) NULL COLLATE 'utf8mb4_0900_ai_ci'
+	`cliente` VARCHAR(1) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tecnico` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`ticket` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci',
+	`tipo` ENUM('correctiva','preventiva','instalacion','emergencia') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`estado` ENUM('programada','en_curso','completada','cancelada') NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`notas` VARCHAR(1) NULL COLLATE 'utf8mb4_unicode_ci'
 ) ENGINE=MyISAM;
 
 -- Eliminando tabla temporal y crear estructura final de VIEW

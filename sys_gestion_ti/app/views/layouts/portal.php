@@ -9,7 +9,7 @@
 <script>try{if(localStorage.getItem('td_theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <link rel="manifest" href="<?= BASE_URL ?>/manifest.json"><meta name="theme-color" content="#0b1437"><meta name="base-url" content="<?= BASE_URL ?>"><link rel="apple-touch-icon" href="<?= asset('img/apple-touch-icon.png') ?>"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <?= brand_css() ?>
-</head><body style="background:var(--bg)">
+</head><body class="portal-body">
 <?php $act = strtolower(explode('/', trim($_GET['url'] ?? 'portal', '/'))[1] ?? 'index'); $nav = ['index' => ['Inicio', 'bi-house'], 'tickets' => ['Mis tickets', 'bi-ticket-perforated'], 'nuevo' => ['Nuevo ticket', 'bi-plus-circle'], 'facturas' => ['Facturas', 'bi-receipt']]; ?>
 <header class="pt-nav"><div class="pt-wrap d-flex align-items-center gap-3 flex-wrap" style="padding-top:.7rem;padding-bottom:.7rem">
   <a href="<?= url('portal') ?>" class="d-flex align-items-center gap-2 text-white p-0"><?= brand_mark("width:36px;height:36px") ?><b style="font-size:1.05rem"><?= e(empresa_nombre()) ?></b><small class="opacity-75 d-none d-sm-inline">Portal del cliente</small></a>
