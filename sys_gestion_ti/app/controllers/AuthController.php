@@ -6,6 +6,8 @@ class AuthController extends Controller
         if (Auth::check()) $this->redirect((Auth::user()['rol'] ?? '') === 'Cliente' ? 'portal' : 'dashboard');
         $error = '';
         $old = '';
+        $credentialsInvalid = false;
+        $loginFormatInvalid = false;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $old = trim($_POST['login'] ?? '');
             $pass = $_POST['password'] ?? '';
@@ -17,6 +19,9 @@ class AuthController extends Controller
                 $error = 'Sesión expirada. Recarga la página e inténtalo de nuevo.';
             } elseif ($old === '' || $pass === '') {
                 $error = 'Ingresa tu usuario y contraseña.';
+            } elseif (!$this->validLoginIdentifier($old)) {
+                $error = 'El usuario o correo tiene un formato no válido.';
+                $loginFormatInvalid = true;
             } else {
                 $u = $this->model('Usuario')->buscarLogin($old);
                 if ($u && password_verify($pass, $u['password'])) {
@@ -29,9 +34,27 @@ class AuthController extends Controller
                 $_SESSION['intentos']++;
                 if ($_SESSION['intentos'] >= 5) { $_SESSION['bloqueo'] = time() + 60; $_SESSION['intentos'] = 0; }
                 $error = 'Usuario o contraseña incorrectos.';
+                $credentialsInvalid = true;
             }
         }
-        $this->renderPlain('auth/login', ['error' => $error, 'old' => $old, 'csrf' => Auth::csrf()]);
+        $this->renderPlain('auth/login', [
+            'error' => $error,
+            'old' => $old,
+            'csrf' => Auth::csrf(),
+            'credentialsInvalid' => $credentialsInvalid,
+            'loginFormatInvalid' => $loginFormatInvalid,
+        ]);
+    }
+
+    private function validLoginIdentifier(string $identifier): bool
+    {
+        if (preg_match('/\A[A-Za-z0-9._-]{3,40}\z/', $identifier) === 1) {
+            return true;
+        }
+
+        return strlen($identifier) <= 120
+            && preg_match('/\A[A-Za-z0-9_%+\-]+(?:\.[A-Za-z0-9_%+\-]+)*@[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9\-]{0,61}[A-Za-z0-9])?)+\z/i', $identifier) === 1
+            && filter_var($identifier, FILTER_VALIDATE_EMAIL) !== false;
     }
 
     public function logout(): void
